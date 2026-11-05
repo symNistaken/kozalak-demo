@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/style.css">
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+    <link rel="icon" href="assets/images/logo.svg" type="image/x-icon">
+    <script src="assets/demo-api.js"></script>
+    <link rel="stylesheet" href="assets/demo.css">
+    <title>Intense Bungalov - Bungalovlarımız</title>
+</head>
+<body>
+<div class="demo-banner">
+    <span>🌲 <strong>Kozalak Bungalov</strong> demosu. Girdiğiniz bilgiler yalnızca tarayıcınızda kalır, kimseye gönderilmez.</span>
+    <span class="demo-banner-actions">
+        <button type="button" onclick="KozalakDemo.reset()">Örnek verileri sıfırla</button>
+        <a href="../index.html#paketler">Paketler ve teklif al</a>
+    </span>
+</div>
+    <!-- Topbar -->
+    <div class="header">
+        <div class="top-bar">
+            <span></span>
+            <div class="top-links">
+                <a href="#">Hakkımızda</a>
+                <a href="#">İletişim</a>
+                <a href="#">SSS</a>
+            </div>
+        </div>
+        <div class="bottom-bar">
+            <img src="assets/images/logo.svg" alt="Logo" class="header-logo" onclick="window.location.href='index.html'">
+            <div class="bottom-links">
+                <a href="index.html"><iconify-icon width="22" height="22" icon="material-symbols:bungalow-outline-rounded"></iconify-icon>Ana Sayfa</a>
+                <a href="bungalows.html"><iconify-icon width="22" height="22" icon="healthicons:village-24px"></iconify-icon>Bungalovlarımız</a>
+                <a href="gallery.html"><iconify-icon width="19" height="19" icon="solar:gallery-round-bold"></iconify-icon> Galeri</a>
+                <a href="reservation.html"><iconify-icon width="20" height="20" icon="pajamas:calendar"></iconify-icon>Rezervasyon Yap</a>
+            </div>
+            <button class="hamburger-btn" id="hamburgerBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="mobile-menu-links">
+                <a href="index.html">Ana Sayfa</a>
+                <a href="bungalows.html">Bungalovlarımız</a>
+                <a href="gallery.html">Galeri</a>
+                <a href="reservation.html">Rezervasyon Yap</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="bungalows-container">
+        <h1 class="bungalows-title">Bungalovlarımız</h1>
+        
+        <div class="bungalows-grid" id="bungalowsGrid">
+
+        </div>
+    </div>
+
+    <div class="modal" id="bungalowModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div class="modal-slider">
+                <img src="" id="modalImage" class="modal-image" alt="Bungalow">
+                <button class="slider-btn prev" onclick="prevImage()">&lt;</button>
+                <button class="slider-btn next" onclick="nextImage()">&gt;</button>
+                <div class="slider-dots" id="sliderDots"></div>
+            </div>
+            <h2 class="modal-title" id="modalName"></h2>
+            
+            <div class="modal-specs" id="modalSpecs"></div>
+            
+            <p class="modal-description" id="modalDescription"></p>
+            
+            <div class="modal-features" id="modalFeatures"></div>
+            
+            <div class="modal-footer">
+                <div class="modal-price">
+                    <div class="modal-price-amount" id="modalPrice"></div>
+                    <div class="modal-price-label">Gece / Başına</div>
+                </div>
+                <button class="modal-reserve-btn" onclick="goToReservation()">Rezervasyon Yap</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="assets/script.js"></script>
+<script>
+    document.getElementById('hamburgerBtn').addEventListener('click', function() {
+        const mobileMenu = document.getElementById('mobileMenu');
+        this.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+    });
+
+    document.querySelectorAll('.mobile-menu-links a').forEach(link => {
+        link.addEventListener('click', function() {
+            document.getElementById('hamburgerBtn').classList.remove('active');
+            document.getElementById('mobileMenu').classList.remove('active');
+        });
+    });
+</script>
+</html>

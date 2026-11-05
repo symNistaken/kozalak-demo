@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Ihlamur bungalovu (örnek görsel)">
+<defs><linearGradient id="s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4c995"/><stop offset="1" stop-color="#f9e6c8"/></linearGradient></defs>
+<rect width="1200" height="800" fill="url(#s)"/>
+<ellipse cx="600" cy="800" rx="900" ry="230" fill="hsl(95,38%,30%)"/>
+<ellipse cx="250" cy="760" rx="520" ry="150" fill="hsl(95,40%,38%)"/>
+<g fill="hsl(95,45%,22%)"><path d="M130 640l55-170 55 170z"/><path d="M110 700l75-190 75 190z"/><path d="M1010 650l50-160 50 160z"/><path d="M990 710l70-180 70 180z"/></g>
+<rect x="470" y="400" width="300" height="220" fill="#8a5a3c"/>
+<path d="M440 405L620 290L800 405z" fill="#3b2a1f"/>
+<rect x="580" y="480" width="70" height="140" fill="#4a2f1e"/>
+<rect x="500" y="450" width="60" height="60" fill="#dff1f0"/><rect x="680" y="450" width="60" height="60" fill="#dff1f0"/>
+<rect x="450" y="620" width="340" height="14" fill="#5d4130"/>
+<text x="600" y="690" text-anchor="middle" font-family="Georgia,serif" font-size="64" fill="#fff" opacity=".92">Ihlamur</text>
+<text x="600" y="724" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" fill="#fff" opacity=".7">örnek görsel</text>
+</svg>

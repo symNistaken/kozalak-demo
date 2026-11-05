@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<!-- Admin interface by Berkay Seyman, 2026. Copyright (c) 2026 Berkay Seyman. -->
+
+<html lang="tr">
+<head>
+    <meta name="csrf-token" content="demo">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="assets/demo-api.js"></script>
+    <link rel="stylesheet" href="assets/demo.css">
+    <title>Admin Giriş</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .login-header h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .login-header p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: 15px;
+            padding: 10px;
+            background: #fadbd8;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            color: #667eea;
+        }
+
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+<div class="demo-banner">
+    <span>🌲 <strong>Kozalak Bungalov</strong> demosu. Girdiğiniz bilgiler yalnızca tarayıcınızda kalır, kimseye gönderilmez.</span>
+    <span class="demo-banner-actions">
+        <button type="button" onclick="KozalakDemo.reset()">Örnek verileri sıfırla</button>
+        <a href="../index.html#paketler">Paketler ve teklif al</a>
+    </span>
+</div>
+    <div class="login-container">
+        <div class="login-header">
+            <h1>Admin Panel</h1>
+            <p>Yönetici Giriş</p>
+        </div>
+
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Kullanıcı Adı</label>
+                <input type="text" id="username" name="username" required placeholder="Kullanıcı adı girin">
+            </div>
+
+            <div class="form-group">
+                <label for="password">Şifre</label>
+                <input type="password" id="password" name="password" required placeholder="Şifre girin">
+            </div>
+
+            <button type="submit" class="login-btn">
+                <span class="loading">
+                    <span class="spinner"></span>Giriş yapılıyor...
+                </span>
+                <span class="button-text">Giriş Yap</span>
+            </button>
+
+            <div class="error-message" id="errorMessage"></div>
+        </form>
+
+        
+        <p style="text-align: center; margin-top: 20px; color: #666; font-size: 13px;">
+            Demo girişi: <strong>admin</strong> / <strong>demo1234</strong>
+        </p>
+        
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMsg = document.getElementById('errorMessage');
+            const loadingSpan = document.querySelector('.loading');
+            const buttonText = document.querySelector('.button-text');
+
+            // Show loading state
+            loadingSpan.style.display = 'inline';
+            buttonText.style.display = 'none';
+
+            try {
+                const response = await fetch('/admin/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': document.querySelector('meta[name=csrf-token]').content
+                    },
+                    body: JSON.stringify({ username, password })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    // Redirect to admin panel
+                    window.location.href = 'admin.html';
+                } else {
+                    errorMsg.textContent = data.message || 'Giriş başarısız oldu.';
+                    errorMsg.style.display = 'block';
+                }
+            } catch (error) {
+                errorMsg.textContent = 'Bir hata oluştu. Lütfen tekrar deneyiniz.';
+                errorMsg.style.display = 'block';
+                console.error('Error:', error);
+            } finally {
+                // Hide loading state
+                loadingSpan.style.display = 'none';
+                buttonText.style.display = 'inline';
+            }
+        });
+    </script>
+</body>
+</html>
