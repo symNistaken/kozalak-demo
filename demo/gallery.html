@@ -3,87 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/style.css">
-    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
-    <link rel="icon" href="assets/images/logo.svg" type="image/x-icon">
+    <title>Galeri | The Intense Bungalov</title>
+    <meta name="description" content="Bungalovlarımızdan, havuzlarımızdan ve bahçelerimizden fotoğraflar.">
+    <link rel="icon" href="assets/img/logo.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="assets/site.css">
     <script src="assets/demo-api.js"></script>
-    <link rel="stylesheet" href="assets/demo.css">
-    <title>Intense Bungalov - Galeri</title>
 </head>
-<body>
-<div class="demo-banner">
-    <span>🌲 <strong>Kozalak Bungalov</strong> demosu. Girdiğiniz bilgiler yalnızca tarayıcınızda kalır, kimseye gönderilmez.</span>
-    <span class="demo-banner-actions">
-        <button type="button" onclick="KozalakDemo.reset()">Örnek verileri sıfırla</button>
-        <a href="../index.html#paketler">Paketler ve teklif al</a>
-    </span>
-</div>
-    <!-- Topbar -->
-    <div class="header">
-        <div class="top-bar">
-            <span></span>
-            <div class="top-links">
-                <a href="#">Hakkımızda</a>
-                <a href="#">İletişim</a>
-                <a href="#">SSS</a>
-            </div>
+<body data-page="gallery">
+<main>
+    <section class="page-hero" style="background-image:url(assets/img/akasya/16.jpg);background-position:50% 55%">
+        <div class="wrap">
+            <span class="eyebrow" style="color:var(--amber)">Fotoğraflar</span>
+            <h1 style="margin-top:10px">Galeri</h1>
+            <p>Bungalovlarımızdan, havuzlardan ve bahçelerden kareler. Büyütmek için fotoğrafa tıklayın.</p>
         </div>
-        <div class="bottom-bar">
-            <img src="assets/images/logo.svg" alt="Logo" class="header-logo" onclick="window.location.href='index.html'">
-            <div class="bottom-links">
-                <a href="index.html"><iconify-icon width="22" height="22" icon="material-symbols:bungalow-outline-rounded"></iconify-icon>Ana Sayfa</a>
-                <a href="bungalows.html"><iconify-icon width="22" height="22" icon="healthicons:village-24px"></iconify-icon>Bungalovlarımız</a>
-                <a href="gallery.html"><iconify-icon width="19" height="19" icon="solar:gallery-round-bold"></iconify-icon> Galeri</a>
-                <a href="reservation.html"><iconify-icon width="20" height="20" icon="pajamas:calendar"></iconify-icon>Rezervasyon Yap</a>
-            </div>
-            <button class="hamburger-btn" id="hamburgerBtn">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+    </section>
+    <section class="block" style="padding-top:48px">
+        <div class="wrap">
+            <div class="filters" id="filters" role="group" aria-label="Bungalova göre filtrele"></div>
+            <div class="masonry" id="masonry"></div>
         </div>
-        <div class="mobile-menu" id="mobileMenu">
-            <div class="mobile-menu-links">
-                <a href="index.html">Ana Sayfa</a>
-                <a href="bungalows.html">Bungalovlarımız</a>
-                <a href="gallery.html">Galeri</a>
-                <a href="reservation.html">Rezervasyon Yap</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="gallery-container">
-        <h1 class="gallery-title">Galeri</h1>
-
-        <div id="gallerySections"></div>
-    </div>
-
-    <div class="lightbox" id="lightbox">
-        <div class="lightbox-content">
-            <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
-            <button class="lightbox-nav prev" onclick="prevLightboxImage()">&lt;</button>
-            <img src="" id="lightboxImage" class="lightbox-image" alt="Gallery Image">
-            <button class="lightbox-nav next" onclick="nextLightboxImage()">&gt;</button>
-            <div class="lightbox-info">
-                <span id="lightboxCounter"></span>
-            </div>
-        </div>
-    </div>
-
+    </section>
+</main>
+<script src="assets/data.js"></script>
+<script src="assets/site.js"></script>
 </body>
-<script src="assets/script.js"></script>
-<script>
-    document.getElementById('hamburgerBtn').addEventListener('click', function() {
-        const mobileMenu = document.getElementById('mobileMenu');
-        this.classList.toggle('active');
-        mobileMenu.classList.toggle('active');
-    });
-
-    document.querySelectorAll('.mobile-menu-links a').forEach(link => {
-        link.addEventListener('click', function() {
-            document.getElementById('hamburgerBtn').classList.remove('active');
-            document.getElementById('mobileMenu').classList.remove('active');
-        });
-    });
-</script>
 </html>

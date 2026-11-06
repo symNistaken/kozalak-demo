@@ -3,87 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/style.css">
-    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
-    <link rel="icon" href="assets/images/logo.svg" type="image/x-icon">
+    <title>The Intense Bungalov | Havuzlu A-frame bungalovlar</title>
+    <meta name="description" content="Doğanın içinde, havuzlu ve jakuzili A-frame bungalovlar. Kozalak Bungalov ile hazırlanmış örnek işletme sitesi.">
+    <link rel="icon" href="assets/img/logo.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="assets/site.css">
     <script src="assets/demo-api.js"></script>
-    <link rel="stylesheet" href="assets/demo.css">
-    <title>Intense Bungalov</title>
 </head>
-<body>
-<div class="demo-banner">
-    <span>🌲 <strong>Kozalak Bungalov</strong> demosu. Girdiğiniz bilgiler yalnızca tarayıcınızda kalır, kimseye gönderilmez.</span>
-    <span class="demo-banner-actions">
-        <button type="button" onclick="KozalakDemo.reset()">Örnek verileri sıfırla</button>
-        <a href="../index.html#paketler">Paketler ve teklif al</a>
-    </span>
-</div>
-    <!-- Topbar -->
-    <div class="header">
-        <div class="top-bar">
-            <span></span>
-            <div class="top-links">
-                <a href="#">Hakkımızda</a>
-                <a href="#">İletişim</a>
-                <a href="#">SSS</a>
+<body data-page="home" data-hero>
+<main>
+    <section class="hero" style="background-image:url(assets/video/poster.jpg)">
+        <video autoplay muted loop playsinline preload="auto" poster="assets/video/poster.jpg" aria-hidden="true">
+            <source src="assets/video/hero.mp4" type="video/mp4">
+        </video>
+        <div class="wrap hero-inner">
+            <span class="eyebrow" style="color:var(--amber)">Havuzlu A-frame bungalovlar</span>
+            <h1 style="margin-top:14px">Doğanın içinde, <em>size özel</em> bir kaçamak</h1>
+            <p class="sub">Kendi bahçeniz, kendi havuzunuz ve jakuziniz. Şehrin sesinden uzakta, ateş çukurunun başında bir akşam.</p>
+            <div class="btns">
+                <a class="btn btn-amber" href="reservation.html">Rezervasyon Yap</a>
+                <a class="btn btn-ghost" href="bungalows.html">Bungalovları Gör</a>
             </div>
         </div>
-        <div class="bottom-bar">
-            <img src="assets/images/logo.svg" alt="Logo" class="header-logo" onclick="window.location.href='index.html'">
-            <div class="bottom-links">
-                <a href="index.html"><iconify-icon width="22" height="22" icon="material-symbols:bungalow-outline-rounded"></iconify-icon>Ana Sayfa</a>
-                <a href="bungalows.html"><iconify-icon width="22" height="22" icon="healthicons:village-24px"></iconify-icon>Bungalovlarımız</a>
-                <a href="gallery.html"><iconify-icon width="19" height="19" icon="solar:gallery-round-bold"></iconify-icon> Galeri</a>
-                <a href="reservation.html"><iconify-icon width="20" height="20" icon="pajamas:calendar"></iconify-icon>Rezervasyon Yap</a>
+        <div class="scroll-cue" aria-hidden="true"></div>
+    </section>
+
+    <section class="booking-bar" aria-label="Müsaitlik sorgula">
+        <div class="wrap">
+            <form class="booking-form" id="bookingForm">
+                <div class="field"><label for="bfIn">Giriş</label><input type="date" id="bfIn"></div>
+                <div class="field"><label for="bfOut">Çıkış</label><input type="date" id="bfOut"></div>
+                <div class="field"><label for="bfBungalow">Bungalov</label><select id="bfBungalow"></select></div>
+                <button class="btn btn-teal" type="submit">Müsaitlik Gör</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="block">
+        <div class="wrap split">
+            <div class="reveal">
+                <span class="eyebrow">Hoş geldiniz</span>
+                <h2>Beş bungalov, hepsinin kendi hikâyesi</h2>
+                <p>Yeşil çatılı A-frame'lerden sıcak ahşap kabinlere, taş ve camdan modern villaya kadar her bungalov kendi bahçesi ve havuzuyla gelir. Sabah kahvenizi hamakta, akşam yemeğinizi mangalda hazırlayın.</p>
+                <div class="stats">
+                    <div><strong>5</strong><span>farklı bungalov</span></div>
+                    <div><strong>2-6</strong><span>kişilik seçenekler</span></div>
+                    <div><strong>7/7</strong><span>doğa içinde</span></div>
+                </div>
+                <div style="margin-top:34px"><a class="btn btn-outline" href="bungalows.html">Hepsini inceleyin</a></div>
             </div>
-            <button class="hamburger-btn" id="hamburgerBtn">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="split-photo reveal">
+                <img src="assets/img/akasya/16.jpg" alt="Akasya bungalovunun havadan görünümü" loading="lazy">
+                <div class="badge-float"><strong>Özel havuz</strong>her bungalovda</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="block" style="padding-top:0">
+        <div class="wrap">
+            <div class="section-head">
+                <span class="eyebrow">Bungalovlarımız</span>
+                <h2>Size uygun olanı seçin</h2>
+                <p class="lead">Fiyatlar örnektir; gerçek sitede işletmenizin fiyatları ve fotoğrafları kullanılır.</p>
+            </div>
+            <div class="cards" id="homeCards"></div>
+        </div>
+    </section>
+
+    <section class="block dark-band">
+        <div class="wrap">
+            <div class="section-head">
+                <span class="eyebrow">Konaklama deneyimi</span>
+                <h2>Her ayrıntı sizin için düşünüldü</h2>
+            </div>
+            <div class="perks">
+                <div class="perk reveal"><div class="ico" data-ico="pool"></div><h3>Özel havuz</h3><p>Bahçenizde, sadece size ait havuzda gün boyu serinleyin.</p></div>
+                <div class="perk reveal"><div class="ico" data-ico="tub"></div><h3>Jakuzi</h3><p>Manzaralı jakuzide, akşamı köpükler içinde bitirin.</p></div>
+                <div class="perk reveal"><div class="ico" data-ico="fire"></div><h3>Ateş çukuru ve mangal</h3><p>Odun ateşinin başında sohbet, mangalda akşam yemeği.</p></div>
+                <div class="perk reveal"><div class="ico" data-ico="tree"></div><h3>Doğayla iç içe</h3><p>Yeşillikler içinde, sessiz ve huzurlu bir ortam.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="block">
+        <div class="wrap">
+            <div class="section-head">
+                <span class="eyebrow">Video turu</span>
+                <h2>Bungalovlara göz atın</h2>
+            </div>
+            <button class="tour reveal" id="tourBtn" type="button" aria-label="Tanıtım videosunu oynat">
+                <img src="assets/video/poster.jpg" alt="" loading="lazy">
+                <span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+                <span class="cap">Bungalov turu<small>1 dk 7 sn</small></span>
             </button>
         </div>
-        <div class="mobile-menu" id="mobileMenu">
-            <div class="mobile-menu-links">
-                <a href="index.html">Ana Sayfa</a>
-                <a href="bungalows.html">Bungalovlarımız</a>
-                <a href="gallery.html">Galeri</a>
-                <a href="reservation.html">Rezervasyon Yap</a>
+    </section>
+
+    <section class="block" style="padding-top:0">
+        <div class="wrap">
+            <div class="section-head">
+                <span class="eyebrow">Galeri</span>
+                <h2>Fotoğraflardan bir seçki</h2>
+            </div>
+            <div class="mosaic" id="homeMosaic"></div>
+            <div style="margin-top:28px;text-align:center"><a class="btn btn-outline" href="gallery.html">Tüm galeriyi gör</a></div>
+        </div>
+    </section>
+
+    <section class="block" style="padding-top:0">
+        <div class="wrap">
+            <div class="cta reveal" style="background-image:url(assets/img/ihlamur/25.jpg)">
+                <h2>Tatilinizi şimdi planlayın</h2>
+                <p>Tarihlerinizi seçin, talebiniz bize ulaşsın. Onay sonrası e-posta ile bilgilendirilirsiniz.</p>
+                <a class="btn btn-amber" href="reservation.html">Rezervasyon Yap</a>
             </div>
         </div>
-    </div>
-    <!-- Content -->
-    <div class="content">
-        <div class="trailer hero-fallback"><div class="hero-inner"><h1>Intense Bungalov</h1><p>Doğanın içinde huzurlu bir tatil</p><a href="reservation.html" class="reserve-btn">Rezervasyon Yap</a></div></div>
-        <div class="about">
-
-        </div>
-        <div class="contact">
-            
-        </div>
-        <div class="sss">
-
-        </div>
-        <div class="footer">
-            <!--
-            <p>&copy; 2024 Intense Bungalov. Tüm hakları saklıdır.</p>
-            -->
-        </div>
-    </div>
+    </section>
+</main>
+<script src="assets/data.js"></script>
+<script src="assets/site.js"></script>
 </body>
-<script src="assets/script.js"></script>
-<script>
-    document.getElementById('hamburgerBtn').addEventListener('click', function() {
-        const mobileMenu = document.getElementById('mobileMenu');
-        this.classList.toggle('active');
-        mobileMenu.classList.toggle('active');
-    });
-
-    // Close menu when a link is clicked
-    document.querySelectorAll('.mobile-menu-links a').forEach(link => {
-        link.addEventListener('click', function() {
-            document.getElementById('hamburgerBtn').classList.remove('active');
-            document.getElementById('mobileMenu').classList.remove('active');
-        });
-    });
-</script>
-</body>
+</html>

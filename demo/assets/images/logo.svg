@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 125 125" role="img" aria-label="Intense Bungalov">
-<circle cx="62.5" cy="62.5" r="56" fill="#0C4848"/>
-<path d="M62 22c10 8 15 20 12 34-2 8-7 15-12 15s-10-7-12-15c-3-14 2-26 12-34z" fill="#d9a441"/>
-<path d="M52 40q10 5 20 0M50 50q12 6 24 0M52 60q10 5 20 0" fill="none" stroke="#0C4848" stroke-width="2.4" stroke-linecap="round"/>
-<path d="M62 71v18" stroke="#d9a441" stroke-width="4" stroke-linecap="round"/>
-<text x="62.5" y="106" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#fff">INTENSE</text>
-</svg>

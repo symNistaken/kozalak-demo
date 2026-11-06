@@ -3,240 +3,252 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Kozalak Bungalov: bungalov ve butik konaklama işletmeleri için tanıtım sitesi ve online rezervasyon sistemi.">
-    <title>Kozalak Bungalov | Rezervasyon Sistemi ve Tanıtım Sitesi</title>
-    <style>
-        :root {
-            --green: #0C4848;
-            --green-dark: #082f2f;
-            --accent: #d9a441;
-            --bg: #f6f4ef;
-            --card: #ffffff;
-            --text: #1d2b2b;
-            --muted: #5d6b6b;
-            --line: #e3ded3;
-        }
-        * { box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { margin: 0; font-family: "Segoe UI", Arial, sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; padding-bottom: 70px; }
-        a { color: inherit; }
-        .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
-
-        header.nav { background: var(--green-dark); color: #fff; }
-        header.nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
-        .brand { font-weight: 700; font-size: 20px; letter-spacing: .3px; text-decoration: none; display: flex; align-items: center; gap: 10px; }
-        .brand svg { width: 26px; height: 26px; }
-        .nav a.link { color: #cfe3e0; text-decoration: none; margin-left: 22px; font-size: 15px; }
-        .nav a.link:hover { color: #fff; }
-
-        .hero { background: linear-gradient(160deg, var(--green) 0%, var(--green-dark) 100%); color: #fff; padding: 72px 0 80px; }
-        .hero h1 { font-size: clamp(30px, 5vw, 48px); line-height: 1.15; margin: 0 0 16px; max-width: 720px; }
-        .hero p { font-size: 19px; color: #d6e8e5; max-width: 620px; margin: 0 0 30px; }
-        .btns { display: flex; flex-wrap: wrap; gap: 12px; }
-        .btn { display: inline-block; padding: 13px 24px; border-radius: 999px; font-weight: 600; text-decoration: none; font-size: 16px; border: 2px solid transparent; cursor: pointer; font-family: inherit; transition: transform .15s, background .2s; }
-        .btn:hover { transform: translateY(-2px); }
-        .btn-wa { background: #25D366; color: #06331a; }
-        .btn-light { background: #fff; color: var(--green); }
-        .btn-ghost { border-color: rgba(255,255,255,.55); color: #fff; }
-        .btn-green { background: var(--green); color: #fff; }
-
-        section { padding: 64px 0; }
-        h2 { font-size: 30px; margin: 0 0 8px; color: var(--green); }
-        .lead { color: var(--muted); max-width: 640px; margin: 0 0 36px; }
-        .grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
-        .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 24px; }
-        .card h3 { margin: 0 0 8px; font-size: 19px; color: var(--green); }
-        .card p { margin: 0; color: var(--muted); font-size: 15px; }
-
-        .demo-box { background: var(--green); color: #fff; border-radius: 16px; padding: 32px; display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-        .demo-box h3 { margin: 0 0 6px; font-size: 20px; }
-        .demo-box p { margin: 0 0 14px; color: #cfe3e0; font-size: 15px; }
-        .cred { background: rgba(255,255,255,.12); border-radius: 8px; padding: 8px 12px; font-family: Consolas, monospace; font-size: 14px; margin-bottom: 14px; display: inline-block; }
-
-        .plans { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); align-items: stretch; }
-        .plan { background: var(--card); border: 2px solid var(--line); border-radius: 16px; padding: 30px; display: flex; flex-direction: column; position: relative; }
-        .plan.featured { border-color: var(--green); }
-        .badge { position: absolute; top: -13px; left: 24px; background: var(--accent); color: #3b2a05; font-size: 13px; font-weight: 700; padding: 3px 12px; border-radius: 999px; }
-        .plan h3 { margin: 0; font-size: 22px; color: var(--green); }
-        .price { font-size: 30px; font-weight: 700; margin: 14px 0 4px; }
-        .price small { font-size: 15px; font-weight: 400; color: var(--muted); }
-        .plan ul { padding-left: 0; list-style: none; margin: 18px 0 26px; flex: 1; }
-        .plan li { padding: 5px 0 5px 26px; position: relative; font-size: 15px; }
-        .plan li::before { content: "✓"; position: absolute; left: 0; color: var(--green); font-weight: 700; }
-        .plan .btn { text-align: center; }
-
-        .contact { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 32px; display: grid; gap: 32px; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); }
-        form label { display: block; font-size: 14px; font-weight: 600; margin: 12px 0 4px; }
-        form input, form select, form textarea { width: 100%; padding: 11px 12px; border: 1px solid #cfc9bb; border-radius: 8px; font: inherit; background: #fff; }
-        form input:focus, form select:focus, form textarea:focus { outline: 2px solid var(--green); border-color: var(--green); }
-        form button { margin-top: 18px; width: 100%; }
-        #formMsg { margin-top: 12px; font-size: 15px; display: none; padding: 10px 12px; border-radius: 8px; }
-        #formMsg.ok { display: block; background: #e3f4e8; color: #14532d; }
-        #formMsg.err { display: block; background: #fde8e8; color: #7f1d1d; }
-        .quick p { color: var(--muted); }
-        .quick .btn { display: block; text-align: center; margin-bottom: 12px; }
-        .btn-mail { border-color: var(--green); color: var(--green); }
-
-        footer { background: var(--green-dark); color: #aac7c3; padding: 28px 0; font-size: 14px; text-align: center; }
-        footer small { display: block; margin-top: 6px; color: #7fa39e; }
-        @media (max-width: 600px) { .nav a.link { display: none; } .hero { padding: 48px 0 56px; } section { padding: 44px 0; } }
-    </style>
+    <title>Kozalak Bungalov | Bungalov işletmeleri için rezervasyon sistemi</title>
+    <meta name="description" content="Bungalov ve butik konaklama işletmeleri için tanıtım sitesi ve online rezervasyon sistemi. Misafir talep gönderir, siz tek panelden onaylarsınız. Canlı demoyu deneyin.">
+    <meta property="og:title" content="Kozalak Bungalov: rezervasyonlarınız tek panelde">
+    <meta property="og:description" content="Bungalov işletmeleri için tanıtım sitesi ve online rezervasyon sistemi. Canlı demoyu deneyin.">
+    <meta property="og:image" content="demo/assets/video/poster.jpg">
+    <link rel="icon" href="demo/assets/img/logo.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="demo/assets/site.css">
+    <link rel="stylesheet" href="assets/sales.css">
 </head>
 <body>
-<header class="nav">
+<header class="site-header" id="siteHeader">
     <div class="wrap">
-        <a href="./" class="brand">
-            <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="#d9a441" d="M16 2C22 7 25 14 23 22c-1 4-4 8-7 8s-6-4-7-8C7 14 10 7 16 2z"/><path fill="none" stroke="#082f2f" stroke-width="1.6" stroke-linecap="round" d="M10 12q6 3 12 0M9 17q7 3.500 14 0M10.500 22q5.500 3 11 0"/></svg>
-            Kozalak Bungalov
+        <a class="brand" href="./" aria-label="Kozalak Bungalov, ana sayfa">
+            <span class="mark"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="#082f2f" d="M16 2C22 7 25 14 23 22c-1 4-4 8-7 8s-6-4-7-8C7 14 10 7 16 2z"/><path fill="none" stroke="#d9a441" stroke-width="1.8" stroke-linecap="round" d="M10 12q6 3 12 0M9 17q7 3.500 14 0M10.500 22q5.500 3 11 0"/></svg></span>
+            <span>Kozalak<small>Bungalov</small></span>
         </a>
-        <nav>
-            <a class="link" href="#demo">Demo</a>
-            <a class="link" href="#paketler">Paketler</a>
-            <a class="link" href="#teklif">Teklif Al</a>
+        <nav class="nav" aria-label="Ana menü">
+            <a href="#nasil">Nasıl çalışır</a><a href="#demo">Demo</a><a href="#paketler">Paketler</a><a href="#sss">SSS</a>
         </nav>
+        <a class="btn btn-wa nav-cta" href="https://wa.me/905340806421?text=Merhaba%2C%20Kozalak%20Bungalov%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener">WhatsApp'tan yazın</a>
+        <button class="burger" id="burger" aria-label="Menüyü aç" aria-expanded="false" aria-controls="mobileNav"><span></span><span></span><span></span></button>
     </div>
 </header>
-
-<div class="hero">
-    <div class="wrap">
-        <h1>Bungalov işletmeniz için online rezervasyon, tek panelde.</h1>
-        <p>Misafirleriniz tarihini seçip talep göndersin, siz onaylayın. Telefon trafiği ve defterdeki karışıklık bitsin. Önce demoyu deneyin, beğenirseniz markanıza göre kuralım.</p>
-        <div class="btns">
-            <a class="btn btn-wa" href="https://wa.me/905340806421?text=Merhaba%2C%20Kozalak%20Bungalov%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener">WhatsApp'tan yazın</a>
-            <a class="btn btn-light" href="#demo">Canlı demoyu deneyin</a>
-            <a class="btn btn-ghost" href="#paketler">Paketleri görün</a>
-        </div>
-    </div>
+<div class="mobile-nav" id="mobileNav">
+    <a href="#nasil">Nasıl çalışır</a><a href="#demo">Demo</a><a href="#paketler">Paketler</a><a href="#sss">SSS</a>
+    <a class="btn btn-wa" href="https://wa.me/905340806421?text=Merhaba%2C%20Kozalak%20Bungalov%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum." target="_blank" rel="noopener">WhatsApp'tan yazın</a>
 </div>
 
-<section>
-    <div class="wrap">
-        <h2>Neler sunuyoruz?</h2>
-        <p class="lead">Küçük ve orta ölçekli konaklama işletmeleri için sade, hızlı kurulan bir sistem.</p>
-        <div class="grid">
-            <div class="card"><h3>Rezervasyon talebi</h3><p>Misafir ad, iletişim bilgisi, bungalov ve tarihleri seçip talebini gönderir. Dolu tarihler takvimde görünür.</p></div>
-            <div class="card"><h3>Çakışma kontrolü</h3><p>Aynı bungalov için onaylı rezervasyonlarla çakışan tarihler otomatik engellenir.</p></div>
-            <div class="card"><h3>Yönetici paneli</h3><p>Talepleri tek ekranda görün, onaylayın veya reddedin. Takvimden bungalov doluluğunu izleyin.</p></div>
-            <div class="card"><h3>E-posta bildirimi</h3><p>Yeni talep geldiğinde size, karar verdiğinizde misafire e-posta gider.</p></div>
-            <div class="card"><h3>Tanıtım sitesi</h3><p>Bungalovlarınızı, galerinizi ve iletişim bilgilerinizi markanıza uygun bir sitede sergileyin.</p></div>
-            <div class="card"><h3>Güvenlik</h3><p>Yönetici girişi, form koruması ve istek sınırlaması ile talepleriniz ve misafir bilgileri korunur.</p></div>
+<main>
+    <section class="hero" style="background-image:url(demo/assets/video/poster.jpg)">
+        <video autoplay muted loop playsinline preload="auto" poster="demo/assets/video/poster.jpg" aria-hidden="true">
+            <source src="demo/assets/video/hero.mp4" type="video/mp4">
+        </video>
+        <div class="wrap hero-inner">
+            <span class="eyebrow" style="color:var(--amber)">Bungalov ve butik konaklama işletmeleri için</span>
+            <h1 style="margin-top:14px">Rezervasyonlarınız <em>tek panelde.</em> Telefon trafiği değil, dolu takvim.</h1>
+            <p class="sub">Misafirleriniz tarihini seçip talep göndersin, siz onaylayın. Çakışmalar otomatik engellenir, takviminiz hep güncel kalır.</p>
+            <div class="btns">
+                <a class="btn btn-wa" href="https://wa.me/905340806421?text=Merhaba%2C%20Kozalak%20Bungalov%20i%C3%A7in%20teklif%20almak%20istiyorum." target="_blank" rel="noopener">WhatsApp'tan yazın</a>
+                <a class="btn btn-ghost" href="#demo">Canlı demoyu deneyin</a>
+            </div>
+            <p class="hint">Kurulum işletmenize göre yapılır · Rezervasyon paketinde hosting dahil</p>
         </div>
-    </div>
-</section>
+        <div class="scroll-cue" aria-hidden="true"></div>
+    </section>
 
-<section id="demo" style="padding-top:0">
-    <div class="wrap">
-        <h2>Canlı demoyu deneyin</h2>
-        <p class="lead">Aşağıdaki demo, bir işletmenin sitesinin nasıl görüneceğinin minyatürüdür. Kendi bungalovlarınız, renkleriniz ve görselleriniz ile hazırlanır. Demo tarayıcınızda çalışır: girdiğiniz bilgiler kimseye gönderilmez, e-posta bildirimleri ise gerçek sistemde sunucu üzerinden gider.</p>
-        <div class="demo-box">
-            <div>
-                <h3>Misafir gözüyle</h3>
-                <p>Ana sayfayı gezin, bir bungalov seçip rezervasyon talebi gönderin.</p>
-                <div class="btns">
-                    <a class="btn btn-light" href="demo/index.html">Demo siteyi aç</a>
-                    <a class="btn btn-ghost" href="demo/reservation.html">Rezervasyon yap</a>
+    <div class="strip"><div class="wrap">
+        <span>Online rezervasyon talebi</span><span>Otomatik çakışma kontrolü</span><span>Yönetici paneli ve takvim</span><span>E-posta bildirimleri</span>
+    </div></div>
+
+    <section class="block" id="nasil">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <span class="eyebrow">Nasıl çalışır</span>
+                <h2>Üç adımda rezervasyon yönetimi</h2>
+                <p class="lead">Defter, telefon ve mesaj kalabalığı yerine tek bir akış.</p>
+            </div>
+            <div class="steps">
+                <div class="step-card reveal"><h3>Misafir talep gönderir</h3><p>Sitenizde bungalovu ve tarihleri seçer. Dolu geceler takvimde zaten işaretlidir.</p></div>
+                <div class="step-card reveal"><h3>Siz onaylarsınız</h3><p>Talepler yönetici panelinize düşer. Tek tıkla onaylar ya da reddedersiniz.</p></div>
+                <div class="step-card reveal"><h3>Takvim güncellenir</h3><p>Onaylanan tarihler dolu görünür, aynı geceye gelen yeni talepler engellenir.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="block" style="padding-top:0">
+        <div class="wrap showcase">
+            <div class="reveal">
+                <span class="eyebrow">Ürün</span>
+                <h2 style="font-size:clamp(30px,4vw,46px);margin:10px 0 0">Hem misafirleriniz hem siz için sade</h2>
+                <ul class="ticks">
+                    <li>Çift ay görünümlü rezervasyon takvimi<span>Misafir gece sayısını ve tahmini tutarı anında görür.</span></li>
+                    <li>Yönetici paneli<span>Bekleyen, onaylı ve tüm rezervasyonlar; bungalov bazında doluluk takvimi.</span></li>
+                    <li>Telefonda da rahat<span>Sayfalar küçük ekranlara göre düzenlenir.</span></li>
+                </ul>
+            </div>
+            <div class="stage reveal">
+                <div class="win">
+                    <div class="win-bar"><i></i><i></i><i></i><b>yonetici paneli</b></div>
+                    <div class="win-body">
+                        <div class="tiles"><div class="tile"><small>Toplam</small><strong>5</strong></div><div class="tile"><small>Bekleyen</small><strong>2</strong></div><div class="tile"><small>Onaylı</small><strong>3</strong></div></div>
+                        <div class="row"><div class="who"><b>Zeynep Çelik</b><span>Palmiye · 14-17 Kasım · 5 kişi</span></div><span class="pill wait">Beklemede</span><span class="mini"><button class="y" tabindex="-1">Onayla</button><button class="n" tabindex="-1">Reddet</button></span></div>
+                        <div class="row"><div class="who"><b>Can Arslan</b><span>Akasya · 18-20 Kasım · 2 kişi</span></div><span class="pill wait">Beklemede</span><span class="mini"><button class="y" tabindex="-1">Onayla</button><button class="n" tabindex="-1">Reddet</button></span></div>
+                        <div class="row"><div class="who"><b>Ayşe Demir</b><span>Akasya · 9-13 Kasım · 2 kişi</span></div><span class="pill ok">Onaylı</span></div>
+                    </div>
+                </div>
+                <div class="guest-card">
+                    <img src="demo/assets/img/akasya/thumb/16.jpg" alt="Akasya bungalovu" loading="lazy">
+                    <div><b>Akasya</b>26 - 29 Kasım · 3 gece<br><span style="color:var(--muted)">Tahmini toplam</span> <strong style="color:var(--teal-700)">₺2.550</strong><div class="go">Talep gönder</div></div>
                 </div>
             </div>
-            <div>
-                <h3>İşletme sahibi gözüyle</h3>
-                <p>Gönderdiğiniz talebi yönetici panelinde görün ve onaylayın.</p>
-                <div class="cred">admin / demo1234</div><br>
-                <a class="btn btn-light" href="demo/admin-login.html">Yönetici paneline gir</a>
+        </div>
+    </section>
+
+    <section class="block dark-band">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <span class="eyebrow">Özellikler</span>
+                <h2>İşletmenizin ihtiyacı olan her şey</h2>
+            </div>
+            <div class="features" style="color:var(--ink)">
+                <div class="feature reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18M9 15l2 2 4-4"/></svg></div><h3>Rezervasyon talebi</h3><p>Misafir ad, iletişim bilgisi, bungalov ve tarihleri seçip talebini gönderir.</p></div>
+                <div class="feature reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.500 8-8 9-4.500-1-8-4-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Çakışma kontrolü</h3><p>Aynı bungalovda onaylı rezervasyonlarla çakışan tarihler otomatik engellenir.</p></div>
+                <div class="feature reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div><h3>Yönetici paneli</h3><p>Talepleri tek ekranda görün, onaylayın ya da reddedin; doluluğu takvimden izleyin.</p></div>
+                <div class="feature reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div><h3>E-posta bildirimi</h3><p>Yeni talep geldiğinde size, karar verdiğinizde misafire e-posta gider.</p></div>
+                <div class="feature reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/></svg></div><h3>Tanıtım sitesi</h3><p>Bungalovlarınız, galeriniz ve iletişim bilgileriniz markanıza uygun bir sitede.</p></div>
+                <div class="feature reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div><h3>Güvenlik</h3><p>Yönetici girişi, form koruması ve istek sınırlaması ile bilgiler korunur.</p></div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section id="paketler" style="padding-top:0">
-    <div class="wrap">
-        <h2>Paketler</h2>
-        <p class="lead">İhtiyacınıza göre iki seçenek. Kesin fiyat, bungalov sayınıza ve isteklerinize göre teklifle belirlenir.</p>
-        <div class="plans">
-            <div class="plan">
-                <h3>Tanıtım Sitesi</h3>
-                <div class="price">7.500 TL'den başlayan fiyatlarla <small>tek seferlik</small></div>
-                <ul>
-                    <li>İşletmenize özel tanıtım sitesi</li>
-                    <li>Bungalov tanıtım sayfaları</li>
-                    <li>Fotoğraf galerisi</li>
-                    <li>İletişim bilgileri ve konum</li>
-                </ul>
-                <a class="btn btn-green" href="#teklif" data-package="Tanıtım Sitesi">Teklif alın</a>
-            </div>
-            <div class="plan featured">
-                <span class="badge">Önerilen</span>
-                <h3>Tanıtım Sitesi + Rezervasyon Sistemi</h3>
-                <div class="price">Teklif alın <small>aylık paket</small></div>
-                <ul>
-                    <li>Tanıtım sitesindeki her şey</li>
-                    <li>Online rezervasyon talebi ve takvim</li>
-                    <li>Yönetici paneli, onay ve red</li>
-                    <li>E-posta bildirimleri</li>
-                    <li>Hosting dahil, sunucuyu biz yönetiriz</li>
-                </ul>
-                <a class="btn btn-green" href="#teklif" data-package="Tanıtım Sitesi + Rezervasyon Sistemi">Teklif alın</a>
+    <section class="block" id="demo">
+        <div class="wrap">
+            <div class="demo-band reveal">
+                <div class="copy">
+                    <span class="eyebrow" style="color:var(--amber)">Canlı demo</span>
+                    <h2>Önce kendiniz deneyin</h2>
+                    <p>Aşağıdaki demo, bir işletmenin sitesinin nasıl görüneceğinin minyatürüdür: bungalovlar, galeri, rezervasyon ve yönetici paneli. Kendi bungalovlarınız, renkleriniz ve fotoğraflarınızla hazırlanır.</p>
+                    <div class="btns">
+                        <a class="btn btn-amber" href="demo/index.html">Misafir gözüyle gez</a>
+                        <a class="btn btn-ghost" href="demo/admin-login.html">Yönetici paneline gir</a>
+                    </div>
+                    <span class="cred">admin / demo1234</span>
+                    <p style="margin-top:16px;font-size:14px">Demo tarayıcınızda çalışır: girdiğiniz bilgiler kimseye gönderilmez. E-posta bildirimleri gerçek sistemde sunucu üzerinden gider.</p>
+                </div>
+                <div class="photos">
+                    <img src="demo/assets/img/ihlamur/thumb/25.jpg" alt="Havuzlu A-frame bungalovlar" loading="lazy">
+                    <img src="demo/assets/img/zeytin/thumb/02.jpg" alt="Jakuzi" loading="lazy">
+                    <img src="demo/assets/img/mese/thumb/06.jpg" alt="Camlı jakuzi odası" loading="lazy">
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section id="teklif" style="padding-top:0">
-    <div class="wrap">
-        <h2>Teklif alın</h2>
-        <p class="lead">Formu doldurun, WhatsApp'ta hazır mesajla açılsın. Ya da doğrudan yazın, aynı gün içinde dönüş yapmaya çalışırız.</p>
-        <div class="contact">
-            <form id="quoteForm" novalidate>
-                <label for="q-name">Ad Soyad *</label>
-                <input id="q-name" name="name" maxlength="100" autocomplete="name" required>
-                <label for="q-business">İşletme adı</label>
-                <input id="q-business" name="business" maxlength="100" autocomplete="organization">
-                <label for="q-package">İlgilendiğiniz paket *</label>
-                <select id="q-package" name="package">
-                    <option value="Tanıtım Sitesi">Tanıtım Sitesi</option>
-                    <option value="Tanıtım Sitesi + Rezervasyon Sistemi" selected>Tanıtım Sitesi + Rezervasyon Sistemi</option>
-                    <option value="Henüz karar vermedim">Henüz karar vermedim</option>
-                </select>
-                <label for="q-message">Mesajınız</label>
-                <textarea id="q-message" name="message" rows="4" maxlength="1000" placeholder="Kaç bungalovunuz var? Özel bir isteğiniz var mı?"></textarea>
-                <button class="btn btn-green" type="submit">WhatsApp ile gönder</button>
-                <div id="formMsg" role="status"></div>
-            </form>
-            <div class="quick">
-                <h3 style="margin-top:0;color:var(--green)">Hızlı iletişim</h3>
-                <p>Form doldurmak istemezseniz doğrudan ulaşın.</p>
-                <a class="btn btn-wa" href="https://wa.me/905340806421?text=Merhaba%2C%20Kozalak%20Bungalov%20i%C3%A7in%20teklif%20almak%20istiyorum." target="_blank" rel="noopener">WhatsApp'tan yazın</a>
-                <a class="btn btn-mail" href="mailto:berkayseyman@gmail.com?subject=Kozalak%20Bungalov%20teklif%20talebi">berkayseyman@gmail.com</a>
+    <section class="block" id="paketler" style="padding-top:0">
+        <div class="wrap">
+            <div class="section-head reveal" style="margin-inline:auto;text-align:center">
+                <span class="eyebrow">Paketler</span>
+                <h2>İhtiyacınıza göre iki seçenek</h2>
+                <p class="lead" style="margin-inline:auto">Kesin kapsam ve fiyat, bungalov sayınıza ve isteklerinize göre teklifle belirlenir.</p>
+            </div>
+            <div class="plans">
+                <div class="plan reveal">
+                    <h3>Tanıtım Sitesi</h3>
+                    <p class="sub">İşletmenizi internette şık bir şekilde tanıtın.</p>
+                    <div class="cost">7.500 TL'den <small>başlayan fiyatlarla, tek seferlik</small></div>
+                    <ul><li>İşletmenize özel tanıtım sitesi</li><li>Bungalov tanıtım sayfaları</li><li>Fotoğraf galerisi</li><li>İletişim bilgileri ve konum</li></ul>
+                    <a class="btn btn-outline" href="#teklif" data-package="Tanıtım Sitesi">Teklif alın</a>
+                </div>
+                <div class="plan featured reveal">
+                    <span class="badge">Önerilen</span>
+                    <h3>Tanıtım Sitesi + Rezervasyon Sistemi</h3>
+                    <p class="sub">Tanıtımdan rezervasyona, hepsi tek yerde.</p>
+                    <div class="cost">Teklif alın <small>aylık paket, hosting dahil</small></div>
+                    <ul><li>Tanıtım sitesindeki her şey</li><li>Online rezervasyon talebi ve takvim</li><li>Yönetici paneli, onay ve red</li><li>E-posta bildirimleri</li><li>Hosting dahil, sunucuyu biz yönetiriz</li></ul>
+                    <a class="btn btn-amber" href="#teklif" data-package="Tanıtım Sitesi + Rezervasyon Sistemi">Teklif alın</a>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<footer>
+    <section class="block" id="sss" style="padding-top:0">
+        <div class="wrap">
+            <div class="section-head reveal" style="margin-inline:auto;text-align:center"><span class="eyebrow">Sık sorulanlar</span><h2>Aklınıza takılanlar</h2></div>
+            <div class="faq reveal">
+                <details><summary>Demoda yaptığım rezervasyonlar gerçek mi?</summary><p>Hayır. Demo tarayıcınızda çalışır, girdiğiniz bilgiler kimseye gönderilmez ve sayfadaki "Örnek verileri sıfırla" düğmesiyle başa döner.</p></details>
+                <details><summary>Kendi markamla ve fotoğraflarımla hazırlanır mı?</summary><p>Evet. Bungalov adları, fiyatlar, fotoğraflar ve renkler işletmenize göre hazırlanır; demodaki işletme sadece bir örnektir.</p></details>
+                <details><summary>Rezervasyon süreci nasıl işliyor?</summary><p>Misafir tarih seçip talep gönderir, siz yönetici panelinden onaylar ya da reddedersiniz. Onaylanan tarihler dolu görünür ve çakışan yeni talepler engellenir.</p></details>
+                <details><summary>E-posta bildirimi var mı?</summary><p>Evet. Gerçek sistemde yeni talep geldiğinde size, karar verdiğinizde misafire e-posta gönderilir.</p></details>
+                <details><summary>Online ödeme alıyor mu?</summary><p>Şu an ödeme almaz; talep ve onay akışı vardır. Ödeme ihtiyacınız varsa teklif görüşmesinde konuşabiliriz.</p></details>
+                <details><summary>Hosting dahil mi, fiyat nasıl belirleniyor?</summary><p>Rezervasyon sistemi aylık paket olarak sunulur ve hosting dahildir. Tanıtım sitesi 7.500 TL'den başlar; kapsam ve kesin fiyat bungalov sayınıza ve isteklerinize göre teklifte netleşir.</p></details>
+            </div>
+        </div>
+    </section>
+
+    <section class="block" id="teklif" style="padding-top:0">
+        <div class="wrap">
+            <div class="contact reveal">
+                <form id="quoteForm" novalidate>
+                    <div><span class="eyebrow">Teklif alın</span><h2 style="font-size:clamp(28px,3.5vw,38px);margin-top:8px">Bilgilerinizi bırakın, WhatsApp'ta konuşalım</h2></div>
+                    <div class="field"><label for="q-name">Ad soyad</label><input id="q-name" autocomplete="name" maxlength="100"></div>
+                    <div class="field"><label for="q-business">İşletme adı</label><input id="q-business" autocomplete="organization" maxlength="100"></div>
+                    <div class="field"><label for="q-package">İlgilendiğiniz paket</label>
+                        <select id="q-package"><option>Tanıtım Sitesi</option><option selected>Tanıtım Sitesi + Rezervasyon Sistemi</option><option>Henüz karar vermedim</option></select></div>
+                    <div class="field"><label for="q-message">Mesajınız (isteğe bağlı)</label><textarea id="q-message" rows="3" maxlength="500" placeholder="Kaç bungalovunuz var? Özel bir isteğiniz var mı?"></textarea></div>
+                    <button class="btn btn-wa" type="submit">WhatsApp ile gönder</button>
+                    <div id="formMsg" role="status"></div>
+                </form>
+                <div class="side">
+                    <h3>Hızlı iletişim</h3>
+                    <p>Form doldurmak istemezseniz doğrudan yazın. Aynı gün içinde dönüş yapmaya çalışırız.</p>
+                    <a class="btn btn-wa" href="https://wa.me/905340806421?text=Merhaba%2C%20Kozalak%20Bungalov%20i%C3%A7in%20teklif%20almak%20istiyorum." target="_blank" rel="noopener">WhatsApp'tan yazın</a>
+                    <a class="btn btn-ghost" href="mailto:berkayseyman@gmail.com?subject=Kozalak%20Bungalov%20teklif%20talebi">berkayseyman@gmail.com</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer" style="margin-top:0">
     <div class="wrap">
-        Kozalak Bungalov &copy; 2026
-        <small>Berkay Seyman · Bilal Berke Ceylan · Eren Batı Altunkapak</small>
+        <div class="foot-note" style="border:0;margin:0;padding:0">
+            <span>&copy; 2026 Kozalak Bungalov</span>
+            <span>Berkay Seyman · Bilal Berke Ceylan · Eren Batı Altunkapak</span>
+        </div>
     </div>
 </footer>
 
 <script>
-    // Paket butonları formdaki seçimi ayarlar.
+(function () {
+    var header = document.getElementById('siteHeader'), burger = document.getElementById('burger'), mobile = document.getElementById('mobileNav');
+    function onScroll() { header.classList.toggle('is-solid', window.scrollY > 40); }
+    onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
+    function setMenu(open) {
+        mobile.classList.toggle('open', open); document.body.classList.toggle('menu-open', open);
+        burger.setAttribute('aria-expanded', open ? 'true' : 'false'); burger.setAttribute('aria-label', open ? 'Menüyü kapat' : 'Menüyü aç');
+    }
+    burger.addEventListener('click', function () { setMenu(!mobile.classList.contains('open')); });
+    mobile.addEventListener('click', function (e) { if (e.target.tagName === 'A') setMenu(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+
+    var items = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: 0.12 });
+        items.forEach(function (e) { io.observe(e); });
+    } else { items.forEach(function (e) { e.classList.add('in'); }); }
+
     document.querySelectorAll('[data-package]').forEach(function (a) {
-        a.addEventListener('click', function () { document.getElementById('q-package').value = a.dataset.package; });
+        a.addEventListener('click', function () { document.getElementById('q-package').value = a.getAttribute('data-package'); });
     });
 
     // Form bir sunucuya gönderilmez; bilgilerle hazır bir WhatsApp mesajı açılır.
     document.getElementById('quoteForm').addEventListener('submit', function (e) {
         e.preventDefault();
-        var f = e.target, msg = document.getElementById('formMsg');
-        var name = f.name.value.trim();
+        var f = e.target, msg = document.getElementById('formMsg'), name = document.getElementById('q-name').value.trim();
         if (!name) { msg.className = 'err'; msg.textContent = 'Lütfen ad soyad alanını doldurun.'; return; }
-        var text = 'Merhaba, ben ' + name + '.' +
-            (f.business.value.trim() ? ' İşletmem: ' + f.business.value.trim() + '.' : '') +
-            ' İlgilendiğim paket: ' + f.package.value + '.' +
-            (f.message.value.trim() ? ' ' + f.message.value.trim() : '') + ' Teklif almak istiyorum.';
+        var business = document.getElementById('q-business').value.trim(), note = document.getElementById('q-message').value.trim();
+        var text = 'Merhaba, ben ' + name + '.' + (business ? ' İşletmem: ' + business + '.' : '') +
+            ' İlgilendiğim paket: ' + document.getElementById('q-package').value + '.' + (note ? ' ' + note : '') + ' Teklif almak istiyorum.';
         window.open('https://wa.me/905340806421?text=' + encodeURIComponent(text), '_blank', 'noopener');
         msg.className = 'ok'; msg.textContent = 'WhatsApp açılıyor. Mesajı göndermeniz yeterli.';
     });
+})();
 </script>
 </body>
 </html>

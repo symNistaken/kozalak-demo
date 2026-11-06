@@ -1,22 +1,6 @@
-/* Demo'ya özel eklemeler */
+/* Yönetici sayfalarındaki demo şeridi */
 body { padding-bottom: 64px; }
-.hero-fallback {
-    align-items: center; justify-content: center; text-align: center; color: #fff;
-    padding-top: 125px; box-sizing: border-box; height: 100vh; margin-bottom: 20px;
-    background: radial-gradient(circle at 20% 20%, #1c7a6b 0%, transparent 45%),
-                linear-gradient(160deg, #0C4848 0%, #082f2f 100%);
-}
-.hero-inner h1 { font-size: clamp(34px, 6vw, 64px); margin: 0 0 12px; }
-.hero-inner p { font-size: 20px; margin: 0 0 28px; color: #d6e8e5; }
-.hero-inner .reserve-btn { display: inline-block; text-decoration: none; }
-.demo-banner {
-    position: fixed; left: 0; right: 0; bottom: 0; z-index: 99999; background: #0C4848; color: #fff;
-    font: 14px/1.4 Arial, sans-serif; padding: 10px 16px; display: flex; flex-wrap: wrap; gap: 8px 16px;
-    align-items: center; justify-content: center; box-shadow: 0 -2px 10px rgba(0,0,0,.25);
-}
+.demo-banner { position: fixed; left: 0; right: 0; bottom: 0; z-index: 99999; background: #082f2f; color: #fff; font: 14px/1.4 Arial, sans-serif; padding: 10px 16px; display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; justify-content: center; box-shadow: 0 -2px 14px rgba(0,0,0,.3); }
 .demo-banner-actions { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
-.demo-banner a, .demo-banner button {
-    background: #fff; color: #0C4848; text-decoration: none; font: inherit; font-weight: bold;
-    padding: 6px 14px; border-radius: 20px; border: 0; cursor: pointer;
-}
-.demo-banner button { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.6); font-weight: normal; }
+.demo-banner a, .demo-banner button { background: #d9a441; color: #2b1d02; text-decoration: none; font: inherit; font-weight: 600; padding: 6px 16px; border-radius: 999px; border: 0; cursor: pointer; }
+.demo-banner button { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.5); font-weight: 500; }
