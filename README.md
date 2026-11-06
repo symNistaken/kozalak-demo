@@ -3,7 +3,7 @@
 Bungalov işletmeleri için online rezervasyon sisteminin **sunucusuz tanıtım demosu**. GitHub Pages üzerinde yayınlanır.
 
 - `index.html`: satış sayfası (nasıl çalışır, paketler, SSS, WhatsApp ve e-posta ile iletişim, teklif formu). Paylaşılacak bağlantı budur.
-- `demo/`: örnek bir işletmenin (The Intense Bungalov) sitesi: ana sayfa, bungalovlar, galeri, rezervasyon ve yönetici paneli.
+- `demo/`: örnek bir işletmenin (Kozalak Bungalov) sitesi: ana sayfa, bungalovlar, galeri, rezervasyon ve yönetici paneli.
 
 ## Demo nasıl çalışıyor?
 
@@ -38,7 +38,7 @@ Sonra `http://localhost:8000` adresini aç. (`file://` ile çift tıklayarak aç
 
 ## Başka bir işletme için uyarlama
 
-`demo/assets/data.js` içindeki bungalov adlarını, fiyatları ve özellikleri değiştir; fotoğrafları `demo/assets/img/<bungalov>/01.jpg, 02.jpg...` (uzun kenar en fazla 1600 px) ve `thumb/` (640 px) klasörlerine koy. Logo için `demo/assets/img/logo.png` dosyasını değiştir. Bungalov adları `demo/assets/demo-api.js` içindeki `BUNGALOWS` listesiyle aynı olmalıdır.
+`demo/assets/data.js` içindeki bungalov adlarını, fiyatları ve özellikleri değiştir; fotoğrafları `demo/assets/img/<bungalov>/01.jpg, 02.jpg...` (uzun kenar en fazla 1600 px) ve `thumb/` (640 px) klasörlerine koy. Marka adı ve logo işareti `demo/assets/site.js` (üstteki `MARK` ve `chrome()`), `admin.html` ve `admin-login.html` içindedir; favicon `demo/assets/img/favicon.svg`. Bungalov adları `demo/assets/demo-api.js` içindeki `BUNGALOWS` listesiyle aynı olmalıdır.
 
 ## Kendi alan adına bağlama
 
@@ -52,4 +52,4 @@ Kozalak Bungalov: berkayseyman@gmail.com · [WhatsApp](https://wa.me/90534080642
 
 ## Notlar
 
-Örnek işletme olarak kullanılan fotoğraflar, video ve logo "The Intense" bungalov işletmesine ait materyallerdir; yayın ve satış amaçlı kullanım için sahibinin izni gerekir. Site arayüzünün ilk sürümünün kökü [CGhost1908/bungalow](https://github.com/CGhost1908/bungalow) projesidir; bu depodaki tasarım ve kod ondan bağımsız olarak yeniden yazılmıştır.
+Demodaki fotoğraf ve videolar örnek bir bungalov işletmesine ait materyallerdir; yayın ve satış amaçlı kullanım için sahibinin izni gerekir. Sitede bu işletmenin adı ve logosu kullanılmaz. Site arayüzünün ilk sürümünün kökü [CGhost1908/bungalow](https://github.com/CGhost1908/bungalow) projesidir; bu depodaki tasarım ve kod ondan bağımsız olarak yeniden yazılmıştır.

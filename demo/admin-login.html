@@ -1,219 +1,81 @@
 <!DOCTYPE html>
-<!-- Admin interface by Berkay Seyman, 2026. Copyright (c) 2026 Berkay Seyman. -->
-
 <html lang="tr">
 <head>
-    <meta name="csrf-token" content="demo">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="demo">
+    <title>Yönetici Girişi | Kozalak Bungalov</title>
+    <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/site.css">
+    <link rel="stylesheet" href="assets/admin.css?v=3">
     <script src="assets/demo-api.js"></script>
-    <link rel="stylesheet" href="assets/demo.css">
-    <title>Admin Giriş</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .login-container {
-            background: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            width: 100%;
-            max-width: 400px;
-        }
-
-        .login-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .login-header h1 {
-            color: #333;
-            margin-bottom: 10px;
-            font-size: 28px;
-        }
-
-        .login-header p {
-            color: #666;
-            font-size: 14px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            color: #333;
-            font-weight: 500;
-        }
-
-        input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 14px;
-            transition: border-color 0.3s;
-        }
-
-        input:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 5px rgba(102, 126, 234, 0.3);
-        }
-
-        .login-btn {
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-
-        .login-btn:hover {
-            transform: translateY(-2px);
-        }
-
-        .login-btn:active {
-            transform: translateY(0);
-        }
-
-        .error-message {
-            color: #e74c3c;
-            font-size: 14px;
-            margin-top: 15px;
-            padding: 10px;
-            background: #fadbd8;
-            border-radius: 5px;
-            display: none;
-        }
-
-        .loading {
-            display: none;
-            text-align: center;
-            color: #667eea;
-        }
-
-        .spinner {
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid #667eea;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            animation: spin 1s linear infinite;
-            display: inline-block;
-            margin-right: 10px;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    </style>
 </head>
-<body>
-<div class="demo-banner">
-    <span>🌲 <strong>Kozalak Bungalov</strong> demosu. Girdiğiniz bilgiler yalnızca tarayıcınızda kalır, kimseye gönderilmez.</span>
-    <span class="demo-banner-actions">
-        <button type="button" onclick="KozalakDemo.reset()">Örnek verileri sıfırla</button>
-        <a href="../index.html#paketler">Paketler ve teklif al</a>
-    </span>
-</div>
-    <div class="login-container">
-        <div class="login-header">
-            <h1>Admin Panel</h1>
-            <p>Yönetici Giriş</p>
+<body class="login-page">
+    <section class="login-art">
+        <a class="brand" href="index.html" aria-label="Kozalak Bungalov, ana sayfa">
+            <span class="mark"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="#082f2f" d="M16 2C22 7 25 14 23 22c-1 4-4 8-7 8s-6-4-7-8C7 14 10 7 16 2z"/><path fill="none" stroke="#d9a441" stroke-width="1.8" stroke-linecap="round" d="M10 12q6 3 12 0M9 17q7 3.500 14 0M10.500 22q5.500 3 11 0"/></svg></span>
+            <span>Kozalak<small>Bungalov</small></span>
+        </a>
+        <h2>Rezervasyonlarınız tek ekranda.</h2>
+        <p>Gelen talepleri görün, tek tıkla onaylayın veya reddedin, doluluk takvimini takip edin.</p>
+    </section>
+
+    <section class="login-box">
+        <div class="login-card">
+            <h1>Yönetici girişi</h1>
+            <p class="lead">Devam etmek için hesabınızla giriş yapın.</p>
+
+            <form id="loginForm" novalidate>
+                <div class="field">
+                    <label for="username">Kullanıcı adı</label>
+                    <input type="text" id="username" name="username" autocomplete="username" required>
+                </div>
+                <div class="field">
+                    <label for="password">Şifre</label>
+                    <input type="password" id="password" name="password" autocomplete="current-password" required>
+                </div>
+                <div class="err" id="errorMessage" role="alert"></div>
+                <button type="submit" class="btn btn-teal" id="loginBtn">Giriş yap</button>
+            </form>
+
+            <div class="hint-card">Demo girişi: kullanıcı adı <code>admin</code>, şifre <code>demo1234</code></div>
+            <a class="back-link" href="index.html">&larr; Siteye dön</a>
         </div>
+    </section>
 
-        <form id="loginForm">
-            <div class="form-group">
-                <label for="username">Kullanıcı Adı</label>
-                <input type="text" id="username" name="username" required placeholder="Kullanıcı adı girin">
-            </div>
-
-            <div class="form-group">
-                <label for="password">Şifre</label>
-                <input type="password" id="password" name="password" required placeholder="Şifre girin">
-            </div>
-
-            <button type="submit" class="login-btn">
-                <span class="loading">
-                    <span class="spinner"></span>Giriş yapılıyor...
-                </span>
-                <span class="button-text">Giriş Yap</span>
-            </button>
-
-            <div class="error-message" id="errorMessage"></div>
-        </form>
-
-        
-        <p style="text-align: center; margin-top: 20px; color: #666; font-size: 13px;">
-            Demo girişi: <strong>admin</strong> / <strong>demo1234</strong>
-        </p>
-        
+    <div class="demo-banner">
+        <span>🌲 <strong>Kozalak Bungalov</strong> demosu. Girdiğiniz bilgiler yalnızca tarayıcınızda kalır, kimseye gönderilmez.</span>
+        <span class="demo-banner-actions">
+            <button type="button" onclick="KozalakDemo.reset()">Örnek verileri sıfırla</button>
+            <a href="../index.html#paketler">Paketler ve teklif al</a>
+        </span>
     </div>
 
     <script>
-        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+        document.getElementById('loginForm').addEventListener('submit', async function (e) {
             e.preventDefault();
-
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            const errorMsg = document.getElementById('errorMessage');
-            const loadingSpan = document.querySelector('.loading');
-            const buttonText = document.querySelector('.button-text');
-
-            // Show loading state
-            loadingSpan.style.display = 'inline';
-            buttonText.style.display = 'none';
-
+            var err = document.getElementById('errorMessage'), btn = document.getElementById('loginBtn');
+            err.classList.remove('show');
+            var username = document.getElementById('username').value.trim();
+            var password = document.getElementById('password').value;
+            if (!username || !password) { err.textContent = 'Kullanıcı adı ve şifre gerekli.'; err.classList.add('show'); return; }
+            btn.disabled = true; btn.textContent = 'Giriş yapılıyor...';
             try {
-                const response = await fetch('/admin/login', {
+                var res = await fetch('/admin/login', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRFToken': document.querySelector('meta[name=csrf-token]').content
-                    },
-                    body: JSON.stringify({ username, password })
+                    headers: { 'Content-Type': 'application/json', 'X-CSRFToken': document.querySelector('meta[name=csrf-token]').content },
+                    body: JSON.stringify({ username: username, password: password })
                 });
-
-                const data = await response.json();
-
-                if (response.ok) {
-                    // Redirect to admin panel
-                    window.location.href = 'admin.html';
-                } else {
-                    errorMsg.textContent = data.message || 'Giriş başarısız oldu.';
-                    errorMsg.style.display = 'block';
-                }
-            } catch (error) {
-                errorMsg.textContent = 'Bir hata oluştu. Lütfen tekrar deneyiniz.';
-                errorMsg.style.display = 'block';
-                console.error('Error:', error);
-            } finally {
-                // Hide loading state
-                loadingSpan.style.display = 'none';
-                buttonText.style.display = 'inline';
+                var data = await res.json();
+                if (res.ok) { location.href = 'admin.html'; return; }
+                err.textContent = data.message || 'Giriş başarısız oldu.';
+            } catch (x) {
+                err.textContent = 'Bir hata oluştu. Lütfen tekrar deneyin.';
             }
+            err.classList.add('show'); btn.disabled = false; btn.textContent = 'Giriş yap';
         });
     </script>
 </body>

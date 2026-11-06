@@ -1,6 +1,0 @@
-/* Yönetici sayfalarındaki demo şeridi */
-body { padding-bottom: 64px; }
-.demo-banner { position: fixed; left: 0; right: 0; bottom: 0; z-index: 99999; background: #082f2f; color: #fff; font: 14px/1.4 Arial, sans-serif; padding: 10px 16px; display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; justify-content: center; box-shadow: 0 -2px 14px rgba(0,0,0,.3); }
-.demo-banner-actions { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
-.demo-banner a, .demo-banner button { background: #d9a441; color: #2b1d02; text-decoration: none; font: inherit; font-weight: 600; padding: 6px 16px; border-radius: 999px; border: 0; cursor: pointer; }
-.demo-banner button { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.5); font-weight: 500; }

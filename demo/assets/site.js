@@ -35,6 +35,8 @@
     };
 
     // ---------- Header, footer, demo şeridi ----------
+    var MARK = '<span class="mark"><svg viewBox="0 0 32 32" aria-hidden="true"><path fill="#082f2f" d="M16 2C22 7 25 14 23 22c-1 4-4 8-7 8s-6-4-7-8C7 14 10 7 16 2z"/><path fill="none" stroke="#d9a441" stroke-width="1.8" stroke-linecap="round" d="M10 12q6 3 12 0M9 17q7 3.500 14 0M10.500 22q5.500 3 11 0"/></svg></span>';
+
     function chrome() {
         var hero = document.body.hasAttribute('data-hero');
         var links = [['index.html', 'Ana Sayfa', 'home'], ['bungalows.html', 'Bungalovlar', 'bungalows'], ['gallery.html', 'Galeri', 'gallery'], ['reservation.html', 'Rezervasyon', 'reservation']];
@@ -42,7 +44,7 @@
         var header = document.createElement('header');
         header.className = 'site-header' + (hero ? '' : ' is-solid');
         header.id = 'siteHeader';
-        header.innerHTML = '<div class="wrap"><a class="brand" href="index.html" aria-label="The Intense Bungalov, ana sayfa"><img src="assets/img/logo.png" alt="" width="52" height="52"><span>The Intense<small>Bungalov</small></span></a>' +
+        header.innerHTML = '<div class="wrap"><a class="brand" href="index.html" aria-label="Kozalak Bungalov, ana sayfa">' + MARK + '<span>Kozalak<small>Bungalov</small></span></a>' +
             '<nav class="nav" aria-label="Ana menü">' + nav + '</nav>' +
             '<a class="btn btn-amber nav-cta" href="reservation.html">Rezervasyon Yap</a>' +
             '<button class="burger" id="burger" aria-label="Menüyü aç" aria-expanded="false" aria-controls="mobileNav"><span></span><span></span><span></span></button></div>';
@@ -71,11 +73,11 @@
 
         var footer = document.createElement('footer');
         footer.className = 'site-footer';
-        footer.innerHTML = '<div class="wrap"><div class="foot-grid"><div><a class="brand" href="index.html"><img src="assets/img/logo.png" alt="" width="52" height="52"><span>The Intense<small>Bungalov</small></span></a>' +
+        footer.innerHTML = '<div class="wrap"><div class="foot-grid"><div><a class="brand" href="index.html">' + MARK + '<span>Kozalak<small>Bungalov</small></span></a>' +
             '<p style="max-width:360px">Doğanın içinde, havuzlu ve jakuzili A-frame bungalovlar. Bu site, Kozalak Bungalov ile hazırlanmış örnek bir işletme sitesidir.</p></div>' +
             '<div><h4>Sayfalar</h4>' + links.map(function (l) { return '<a href="' + l[0] + '">' + l[1] + '</a>'; }).join('') + '</div>' +
             '<div><h4>İletişim</h4><p>Telefon, adres ve harita bilgileri işletmenize göre eklenir.</p><a href="https://wa.me/905340806421?text=' + encodeURIComponent('Merhaba, Kozalak Bungalov hakkında bilgi almak istiyorum.') + '" target="_blank" rel="noopener" style="color:var(--amber)">Kozalak Bungalov\'a yazın</a></div></div>' +
-            '<div class="foot-note"><span>&copy; 2026 The Intense Bungalov (örnek site)</span><span>Hazırlayan: <a href="../index.html">Kozalak Bungalov</a></span></div></div>';
+            '<div class="foot-note"><span>&copy; 2026 Kozalak Bungalov (örnek site)</span><span><a href="../index.html">Kendi siteniz için teklif alın</a></span></div></div>';
         document.body.appendChild(footer);
 
         var banner = document.createElement('div');
