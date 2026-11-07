@@ -10,6 +10,7 @@ Bungalov işletmeleri için online rezervasyon sisteminin **sunucusuz tanıtım 
 Bu demoda sunucu ve veritabanı **yoktur**. Rezervasyonlar ve yönetici işlemleri ziyaretçinin kendi tarayıcısında (`localStorage`) tutulur, hiçbir bilgi kimseye gönderilmez. Gerçek sistemde aynı ekranlar bir sunucu, veritabanı ve e-posta bildirimleriyle çalışır.
 
 - Yönetici girişi: `admin` / `demo1234` (herkese açık demo şifresi, gerçek bir şifre değildir).
+- Yönetim paneli bir işletmenin elindeki çizelge düzenindedir: her bungalov için günlük doluluk, kişi bilgileri (TC, iletişim, gelen, kahvaltı) ve ödemeler (kapora, alınacak, toplam). Hücreye tıklayıp kaydı düzenleyebilir, boş güne rezervasyon ekleyebilirsiniz.
 - Sayfanın altındaki "Örnek verileri sıfırla" düğmesi demoyu başlangıç haline döndürür.
 - `demo/assets/demo-api.js`, sitenin sunucuya yaptığı çağrıları tarayıcıda taklit eder. Doğrulama ve çakışma kuralları gerçek sistemdekiyle aynıdır.
 - Teklif formu sunucuya göndermez; bilgilerle hazır bir WhatsApp mesajı açar.
@@ -24,6 +25,7 @@ demo/                      Örnek işletme sitesi
   assets/site.js           Header/footer, galeri, lightbox, rezervasyon takvimi
   assets/data.js           Bungalov bilgileri ve fotoğraf listesi (fiyatlar örnektir)
   assets/demo-api.js       Sunucuyu taklit eden katman
+  assets/admin.css, admin.js  Yönetim paneli (gerçek üründeki panelle aynı dosyalar)
   assets/img/<bungalov>/   Web için küçültülmüş fotoğraflar (+ thumb/ önizlemeler)
   assets/video/            hero.mp4 (döngü), tour.mp4 (tam tur), poster.jpg
 ```

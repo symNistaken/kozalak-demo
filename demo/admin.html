@@ -10,11 +10,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/site.css">
-    <link rel="stylesheet" href="assets/admin.css?v=3">
-    <script src="assets/demo-api.js"></script>
+    <link rel="stylesheet" href="assets/admin.css?v=6">
+    <script src="assets/demo-api.js?v=4"></script>
     <script src="assets/data.js"></script>
 </head>
-<body>
+<body class="has-banner">
 <div class="adm">
     <aside class="side">
         <a class="brand" href="index.html" aria-label="Kozalak Bungalov, ana sayfa">
@@ -23,17 +23,17 @@
         </a>
         <div class="label">Rezervasyonlar</div>
         <div class="navs">
-            <button type="button" data-view="inbox" aria-current="true">
+            <button type="button" data-view="grid" aria-current="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>
+                Çizelge
+            </button>
+            <button type="button" data-view="inbox">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.5 5h13L22 12v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-6z"/></svg>
                 Bekleyen talepler <span class="badge" id="navPending">0</span>
             </button>
             <button type="button" data-view="all">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
                 Tüm rezervasyonlar
-            </button>
-            <button type="button" data-view="calendar">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-                Doluluk takvimi
             </button>
         </div>
         <div class="spacer"></div>
@@ -50,24 +50,40 @@
     <main class="main">
         <div class="top">
             <div>
-                <h1 id="viewTitle">Bekleyen talepler</h1>
+                <h1 id="viewTitle">Konaklama çizelgesi</h1>
                 <p id="viewSub"></p>
             </div>
-            <a class="btn btn-outline" href="../index.html#paketler">Kendi sisteminiz için teklif alın</a>
+            <button type="button" class="btn btn-amber" id="addBtn">+ Rezervasyon ekle</button>
         </div>
 
-        <section class="tiles" aria-label="Özet">
-            <div class="tile"><small>Toplam</small><strong id="cTotal">0</strong></div>
-            <div class="tile t-wait"><small>Beklemede</small><strong id="cPending">0</strong></div>
-            <div class="tile t-ok"><small>Onaylı</small><strong id="cApproved">0</strong></div>
-            <div class="tile t-no"><small>Reddedilen</small><strong id="cRejected">0</strong></div>
+        <section class="tiles" id="tiles" aria-label="Özet"></section>
+
+        <section data-pane="grid">
+            <div class="bar">
+                <div class="navbtns">
+                    <button type="button" id="navPrev" aria-label="Önceki dönem">&lsaquo;</button>
+                    <button type="button" class="today" id="navToday">Bugün</button>
+                    <button type="button" id="navNext" aria-label="Sonraki dönem">&rsaquo;</button>
+                </div>
+                <strong class="range" id="rangeLabel"></strong>
+                <div class="chips" id="spanChips" role="group" aria-label="Görünüm süresi">
+                    <button type="button" class="chip" data-span="7" aria-pressed="true">7 gün</button>
+                    <button type="button" class="chip" data-span="14" aria-pressed="false">14 gün</button>
+                </div>
+                <label class="goto"><span>Tarihe git</span><input type="date" id="gotoDate"></label>
+            </div>
+            <div class="sheet-wrap" id="sheet"></div>
+            <div class="legend">
+                <span class="a">Dolu (onaylı)</span><span class="p">Onay bekleyen talep</span><span class="o">Ödeme bilgisi</span><span class="g">Tahsil edildi</span>
+                <span class="hintx">Dolu hücreye tıklayıp düzenleyin, boş hücreye tıklayıp o güne rezervasyon ekleyin.</span>
+            </div>
         </section>
 
-        <section id="vInbox" data-pane="inbox">
+        <section data-pane="inbox" hidden>
             <div class="list" id="inboxList"></div>
         </section>
 
-        <section id="vAll" data-pane="all" hidden>
+        <section data-pane="all" hidden>
             <div class="bar">
                 <div class="chips" id="statusChips" role="group" aria-label="Duruma göre filtrele">
                     <button type="button" class="chip" data-f="all" aria-pressed="true">Tümü</button>
@@ -78,25 +94,10 @@
                 <label class="search">
                     <span class="sr">Misafir ara</span>
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-                    <input type="search" id="q" placeholder="İsim, e-posta veya telefon ara">
+                    <input type="search" id="q" placeholder="İsim, telefon, TC veya bungalov ara">
                 </label>
             </div>
             <div class="list" id="allList"></div>
-        </section>
-
-        <section id="vCalendar" data-pane="calendar" hidden>
-            <div class="cal-wrap">
-                <div class="chips" id="bungChips" role="group" aria-label="Bungalov seç"></div>
-                <div class="cal-head">
-                    <h3 id="calTitle"></h3>
-                    <button type="button" id="calPrev" aria-label="Önceki ay">&lsaquo;</button>
-                    <button type="button" class="today" id="calToday">Bugün</button>
-                    <button type="button" id="calNext" aria-label="Sonraki ay">&rsaquo;</button>
-                </div>
-                <div class="dow" aria-hidden="true"><span>Pzt</span><span>Sal</span><span>Çar</span><span>Per</span><span>Cum</span><span>Cmt</span><span>Paz</span></div>
-                <div class="grid" id="calGrid"></div>
-                <div class="legend"><span class="a">Onaylı konaklama</span><span class="p">Onay bekleyen talep</span></div>
-            </div>
         </section>
     </main>
 </div>
@@ -109,6 +110,17 @@
     </span>
 </div>
 
-<script src="assets/admin.js"></script>
+<script>
+    // Örnek işletmenin oda numaraları (çizelgedeki sıra bu numaralara göredir).
+    var CODES = { Zeytin: '101', Akasya: '102', Ihlamur: '103', 'Meşe': '201', Palmiye: '202' };
+    window.ADMIN_CFG = {
+        bungalows: window.KOZALAK.bungalows.map(function (b) {
+            return { name: b.name, code: CODES[b.name] || '', cover: 'assets/img/' + b.slug + '/thumb/' + (b.cover < 10 ? '0' : '') + b.cover + '.jpg' };
+        }).sort(function (a, b) { return a.code < b.code ? -1 : 1; }),
+        loginUrl: 'admin-login.html',
+        logout: function () { KozalakDemo.logout(); location.href = 'admin-login.html'; }
+    };
+</script>
+<script src="assets/admin.js?v=6"></script>
 </body>
 </html>
